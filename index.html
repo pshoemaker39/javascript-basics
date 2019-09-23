@@ -47,6 +47,14 @@
 </style>
 
 <script>
+
+    /* replace all prototype https://stackoverflow.com/questions/1144783/how-to-replace-all-occurrences-of-a-string */
+    String.prototype.replaceAll = function(search, replacement) {
+        var target = this;
+        return target.replace(new RegExp(search, 'g'), replacement);
+    };
+
+
     var colors = ['red', 'blue', 'gold'];
     var chicagoStartups = [
         '  Interior   Define  ',
@@ -110,6 +118,7 @@
             }
             else {
                 //TODO:: REPLACE [chicagoStartups.reverse()] WITH A FUNCTION CALLED "chicagoStartupsReverse"
+
                 chicagoStartups.reverse().forEach( function(startup) {
                     var childDiv = document.createElement('div');
                     var text = document.createTextNode(startup);
@@ -120,8 +129,13 @@
         }
     }
 
-    function chicagoStartupsReverse() {
+    function chicagoStartupsReverse(names) {
         var reversedStartups = [];
+
+        for(var i = names.length; i > 0; i--) {
+            console.log(`q ${names[i]}`);
+        }
+
         /*
             TODO: REVERSE THE CONTENTS OF THE ARRAY WITHOUT USING THE BUILT IN REVERSE METHOD
                   RETURN THE REVERSED ARRAY
@@ -136,8 +150,14 @@
         return reversedStartups;
     }
 
-    function cleanAndCountCharacters() {
+    function cleanAndCountCharacters(name) {
         console.log('CLEAN AND COUNT CHARACTERS');
+
+        name.replaceAll()
+
+
+
+
         /*
             TODO: REMOVES ANY SPECIAL CHARACTERS FROM EACH COMPANY NAME AND
               DISPLAYS THE NUMBER OF REMAINING CHARACTERS NEXT TO THE FULL WORD.
@@ -186,7 +206,6 @@
         displayInstructions: true
     };
 
-    //TODO INVOKE THIS ANONYMOUS FUNCTION TO DISPLAY HOMEWORK INSTRUCTIONS IN THE CONSOLE
     (function() {
         if (flags.displayInstructions) {
             console.log(`
@@ -222,6 +241,6 @@
                         `);
         }
         
-    });
+    })();
 
 </script>
