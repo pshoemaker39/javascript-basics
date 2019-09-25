@@ -138,16 +138,13 @@
         return reversedStartups;
     }
 
-    function cleanAndCountCharacters(name) {
+    function cleanAndCountCharacters() {
         console.log('CLEAN AND COUNT CHARACTERS');
 
-        name.replaceAll()
-        /*
-            TODO: REMOVES ANY SPECIAL CHARACTERS FROM EACH COMPANY NAME AND
-              DISPLAYS THE NUMBER OF REMAINING CHARACTERS NEXT TO THE FULL WORD.
-              DONT FORGET TO REMOVE LEADING AND TRAILING WHITESPACES AS WELL
-        */
-
+        chicagoStartups.forEach(name => {
+            var newName = name.replaceAll("[0-9$&+,:;=?@#~|'<>.^*()%!-]", '').trim();
+            console.log(`Corrected name: ${newName}, with ${newName.length} characters`);
+        });
     }
     
     function initReverse() {
