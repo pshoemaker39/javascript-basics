@@ -117,36 +117,24 @@
                 });
             }
             else {
-                //TODO:: REPLACE [chicagoStartups.reverse()] WITH A FUNCTION CALLED "chicagoStartupsReverse"
 
-                chicagoStartups.reverse().forEach( function(startup) {
+                chicagoStartupsReverse().forEach( function(startup) {
                     var childDiv = document.createElement('div');
                     var text = document.createTextNode(startup);
                     childDiv.appendChild(text);
                     reverseContainer.appendChild(childDiv);
-                });
+                }); 
+                
             }
         }
     }
 
-    function chicagoStartupsReverse(names) {
+    function chicagoStartupsReverse() {
         var reversedStartups = [];
 
-        for(var i = names.length; i > 0; i--) {
-            console.log(`q ${names[i]}`);
+        for(var i = chicagoStartups.length-1; i >= 0; i--){
+            reversedStartups.push(chicagoStartups[i]);
         }
-
-        /*
-            TODO: REVERSE THE CONTENTS OF THE ARRAY WITHOUT USING THE BUILT IN REVERSE METHOD
-                  RETURN THE REVERSED ARRAY
-
-            TIPS: 
-                1.  REVIEW JAVASCRIPT ARRAY DATA STRUCTURE AND THE BUILTIN METHODS PROVIDED TO ALL ARRAYS
-
-                2.  THIS IS A COMMON JOB INTERVIEW QUESTION, THAT SHOULD BE SOLVABLE BASED ON AN UNDERSTANDING OF
-                    DATA STRUTUCTURES REGARDLESS OF THE PROGRAMMING LANGUAGE
-        
-        */
         return reversedStartups;
     }
 
@@ -154,10 +142,6 @@
         console.log('CLEAN AND COUNT CHARACTERS');
 
         name.replaceAll()
-
-
-
-
         /*
             TODO: REMOVES ANY SPECIAL CHARACTERS FROM EACH COMPANY NAME AND
               DISPLAYS THE NUMBER OF REMAINING CHARACTERS NEXT TO THE FULL WORD.
@@ -180,6 +164,7 @@
     }
 
     function toggleDisplay() {
+        
         /*
         TODO: REVIEW THE CODE IN THE PROVIDED REVERSE EXAMPLE, USE JAVASCRIPT TO ADD A CLICKABLE BUTTON 
         CALLED "Toggle Display" ... WHEN THE USER CLICKS THE BUTTON, IT RENDERS THE DISPLAY OF THE COMPANY NAMES 
@@ -242,5 +227,6 @@
         }
         
     })();
+
 
 </script>
