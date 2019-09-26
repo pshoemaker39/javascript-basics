@@ -115,7 +115,6 @@
                     reverseContainer.removeChild(reverseContainer.lastChild);
                 }
                 reversedChicagoStartups.forEach(function(chicagoStartup, index) {
-                    console.log(chicagoStartup);
                     var childDiv = document.createElement('div');
                     var text = document.createTextNode(chicagoStartup);
                     childDiv.appendChild(text);
@@ -168,50 +167,36 @@
 
     function toggleDisplay() {
 
-        displayVertical = !displayVertical;
-
-        if(displayVertical) {
-
+        if(!document.getElementById('horizontalContainer')) {
+            var rootDiv = document.createElement('div');
+            rootDiv.id = 'horizontalContainer';
             var companyNamesContainer = document.createElement('div');
+
             chicagoStartups.forEach( function(chicagoStartup, index) {
-                var childDiv = document.createElement('div');
+                var childDiv = document.createElement('span');
                 var text = document.createTextNode(index.toString().concat(' .) ').concat(chicagoStartup));
                 childDiv.appendChild(text);
                 companyNamesContainer.appendChild(childDiv);
             });
-            
-        } else {
-
-            var companyNamesContainer = document.createElement('div');
-            var childDiv = document.createElement('div');
-            var nameCats = '';
-            chicagoStartups.forEach( function(chicagoStartup, index) {
-                
-                nameCats += ' '.concat(index.toString().concat(' .) ').concat(chicagoStartup));
-                
-                
-            });
-            var text = document.createTextNode(nameCats);
-            childDiv.appendChild(text);
-            companyNamesContainer.appendChild(childDiv);
+            rootDiv.appendChild(companyNamesContainer);
+            document.body.appendChild(rootDiv);
         }
 
+        displayVertical = !displayVertical;
 
-        
-        /*
-        TODO: REVIEW THE CODE IN THE PROVIDED REVERSE EXAMPLE, USE JAVASCRIPT TO ADD A CLICKABLE BUTTON 
-        CALLED "Toggle Display" ... WHEN THE USER CLICKS THE BUTTON, IT RENDERS THE DISPLAY OF THE COMPANY NAMES 
-        FROM VERTICAL, TO HORIZONTAL.
-        IF THE USER CLICKS THE TOGGLE BUTTON AGAIN THE NAMES SHOULD ONCE AGAIN BE DISPLAYED VERTICALLY.
+        var hDisplay = document.getElementById('rootContainer');
+        var vDisplay = document.getElementById('horizontalContainer');
 
-        TIPS: 
-            1.  MAKE SURE TO READ AND UNDERSTAND THE DIFFERENCE BETWEEN BLOCK ELEMENTS SUCH AS A DIV, 
-                AND INLINE ELEMENTS SUCH AS A SPAN.
+        if(displayVertical) {
 
-            2.  DIVIDE AND CONQUER.
+            hDisplay.style.display = 'block';
+            vDisplay.style.display = 'none';
 
-            3.  
-        */
+        } else {
+
+            hDisplay.style.display = 'none';
+            vDisplay.style.display = 'block';
+        }
     }
     
     function run() {
